@@ -2,339 +2,351 @@ import Image from "next/image";
 import {
   academicIntro,
   academicProjects,
-  experiences,
+  connectIntro,
+  internshipIntro,
+  internships,
   personalIntro,
   personalProjects,
   profile,
+  summaryColumns,
+  type Internship,
   type Project,
 } from "@/data/content";
 
 const navLinks = [
-  { href: "#about", label: "About" },
+  { href: "#intro", label: "Intro" },
+  { href: "#internship", label: "Internship" },
   { href: "#academic", label: "Academic" },
-  { href: "#competitions", label: "Competitions" },
-  { href: "#experience", label: "Experience" },
+  { href: "#personal", label: "Personal" },
+  { href: "#connect", label: "Connect" },
+  { href: "#summary", label: "Summary" },
 ];
 
 function Nav() {
   return (
-    <header className="sticky top-0 z-50 border-b border-line bg-cream/85 backdrop-blur-md">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <a href="#top" className="font-display text-xl italic tracking-tight">
-          {profile.name}
+    <nav className="fixed inset-x-0 top-0 z-50 border-b border-navy/10 bg-alice/80 backdrop-blur-lg">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-12">
+        <a
+          href="#intro"
+          className="font-display text-2xl font-bold tracking-wide md:text-3xl"
+        >
+          {profile.name}.
         </a>
-        <nav className="hidden items-center gap-8 text-sm text-clay md:flex">
+        <div className="hidden gap-8 text-sm font-medium uppercase tracking-widest md:flex">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="transition-colors hover:text-ink"
+              className="decoration-sun decoration-[3px] underline-offset-8 transition-all hover:underline"
             >
               {link.label}
             </a>
           ))}
-        </nav>
-        <a
-          href="#contact"
-          className="rounded-full bg-berry px-5 py-2 text-sm font-medium text-cream transition-colors hover:bg-berry-deep"
-        >
-          Get in touch
-        </a>
-      </div>
-    </header>
-  );
-}
-
-function Hero() {
-  const stats = [
-    { value: academicProjects.length, label: "Academic projects" },
-    { value: personalProjects.length, label: "Competition cases" },
-    { value: experiences.length, label: "Internships" },
-  ];
-
-  return (
-    <section className="mx-auto grid max-w-6xl gap-12 px-6 pt-20 pb-24 sm:pt-28 lg:grid-cols-[7fr_5fr] lg:items-center">
-      <div>
-      <p className="mb-6 inline-flex items-center gap-2 rounded-full border border-line bg-white/60 px-4 py-1.5 text-xs font-medium uppercase tracking-[0.18em] text-clay">
-        <span className="h-1.5 w-1.5 rounded-full bg-berry" />
-        {profile.role} · {profile.school}
-      </p>
-      <h1 className="max-w-4xl font-display text-5xl leading-[1.08] tracking-tight sm:text-6xl lg:text-7xl">
-        Hi, I&rsquo;m {profile.name} <span className="align-middle">👋</span>
-        <br />
-        Turning complex inputs into{" "}
-        <em className="text-berry">clear, compelling narratives</em>.
-      </h1>
-      <p className="mt-8 max-w-2xl text-lg leading-relaxed text-clay">
-        I thrive at the intersection of consumer insights, data-driven
-        strategy, and structured communication — and I love making every pitch,
-        deck, and campaign carry a clear value proposition.
-      </p>
-      <div className="mt-10 flex flex-wrap items-center gap-4">
-        <a
-          href="#academic"
-          className="rounded-full bg-ink px-7 py-3 text-sm font-medium text-cream transition-colors hover:bg-berry"
-        >
-          Explore my work ↓
-        </a>
-        <a
-          href="#contact"
-          className="rounded-full border border-ink/25 px-7 py-3 text-sm font-medium transition-colors hover:border-berry hover:text-berry"
-        >
-          Get in touch
-        </a>
-      </div>
-      <dl className="mt-16 flex flex-wrap gap-x-14 gap-y-6 border-t border-line pt-8">
-        {stats.map((stat) => (
-          <div key={stat.label}>
-            <dt className="sr-only">{stat.label}</dt>
-            <dd className="font-display text-4xl text-berry">{stat.value}</dd>
-            <dd className="mt-1 text-sm text-clay">{stat.label}</dd>
-          </div>
-        ))}
-      </dl>
-      </div>
-      <div className="relative mx-auto w-full max-w-md overflow-hidden rounded-[2rem] bg-sand shadow-2xl shadow-ink/15 lg:max-w-none">
-        <Image
-          src={profile.portrait}
-          alt={`Portrait of ${profile.name}`}
-          width={1280}
-          height={960}
-          priority
-          sizes="(min-width: 1024px) 40vw, (min-width: 640px) 28rem, 100vw"
-          className="aspect-[4/5] w-full object-cover object-[52%_45%]"
-        />
-        <p className="absolute right-5 bottom-5 rounded-full bg-cream/90 px-4 py-2 text-xs font-medium text-ink shadow-sm backdrop-blur">
-          {profile.location}
-        </p>
-      </div>
-    </section>
-  );
-}
-
-function SectionHeading({
-  eyebrow,
-  title,
-  intro,
-}: {
-  eyebrow: string;
-  title: string;
-  intro?: string;
-}) {
-  return (
-    <div className="max-w-3xl">
-      <p className="text-xs font-semibold uppercase tracking-[0.22em] text-berry">
-        {eyebrow}
-      </p>
-      <h2 className="mt-3 font-display text-4xl tracking-tight sm:text-5xl">
-        {title}
-      </h2>
-      {intro && (
-        <p className="mt-5 text-base leading-relaxed text-clay">{intro}</p>
-      )}
-    </div>
-  );
-}
-
-function About() {
-  return (
-    <section id="about" className="scroll-mt-24 border-y border-line bg-sand">
-      <div className="mx-auto grid max-w-6xl gap-12 px-6 py-24 lg:grid-cols-[5fr_7fr]">
-        <div>
-          <SectionHeading
-            eyebrow="About"
-            title="Creative lens, logical structure."
-          />
-          <div className="mt-8 flex flex-wrap gap-2">
-            {profile.strengths.map((strength) => (
-              <span
-                key={strength}
-                className="rounded-full border border-ink/15 bg-cream px-4 py-1.5 text-xs font-medium text-ink/80"
-              >
-                {strength}
-              </span>
-            ))}
-          </div>
         </div>
-        <div className="space-y-6 text-base leading-relaxed text-ink/80">
+      </div>
+    </nav>
+  );
+}
+
+function Intro() {
+  return (
+    <section
+      id="intro"
+      className="mx-auto grid max-w-7xl items-center gap-14 px-6 pt-32 pb-20 md:pt-44 md:pb-28 lg:grid-cols-[7fr_5fr] lg:px-12"
+    >
+      <div>
+        <span className="mb-6 inline-block rounded-full bg-sun px-3 py-1 text-xs font-semibold uppercase tracking-widest">
+          {profile.role}
+        </span>
+        <h1 className="mb-8 font-display text-5xl font-bold leading-tight md:text-7xl">
+          Hi, I&rsquo;m {profile.name}{" "}
+          <span className="inline-block animate-bounce">👋</span>
+        </h1>
+        <div className="space-y-6 text-lg font-light text-navy/85 md:text-xl">
           {profile.intro.map((paragraph) => (
             <p key={paragraph.slice(0, 32)}>{paragraph}</p>
           ))}
         </div>
       </div>
+      <div className="relative mx-auto w-full max-w-sm lg:max-w-none">
+        <div
+          aria-hidden
+          className="absolute -inset-3 rotate-2 rounded-[2.5rem] bg-sun"
+        />
+        <div className="relative overflow-hidden rounded-[2rem] ring-1 ring-navy/10">
+          <Image
+            src={profile.portrait}
+            alt={`Portrait of ${profile.name}`}
+            width={1280}
+            height={1600}
+            preload
+            sizes="(min-width: 1024px) 36vw, (min-width: 640px) 24rem, 100vw"
+            className="aspect-[4/5] w-full object-cover object-[52%_45%]"
+          />
+          <p className="absolute right-5 bottom-5 rounded-full bg-alice/90 px-4 py-2 text-xs font-medium shadow-sm backdrop-blur">
+            {profile.location}
+          </p>
+        </div>
+      </div>
     </section>
   );
 }
 
-function ProjectCard({ project }: { project: Project }) {
+function Divider() {
   return (
-    <article className="group flex flex-col overflow-hidden rounded-2xl bg-white ring-1 ring-line transition-shadow hover:shadow-xl hover:shadow-ink/10">
-      <div className="relative aspect-video overflow-hidden">
-        <Image
-          src={project.cover}
-          alt={`${project.title} — ${project.brand} cover slide`}
-          fill
-          sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
-        />
+    <div className="mx-auto max-w-7xl px-6 lg:px-12">
+      <hr className="border-navy/10" />
+    </div>
+  );
+}
+
+function SectionHeading({ title, intro }: { title: string; intro: string }) {
+  return (
+    <div className="mx-auto mb-16 max-w-3xl text-center md:mb-24">
+      <span className="mx-auto mb-6 block h-1.5 w-16 rounded-full bg-sun" />
+      <h2 className="mb-6 font-display text-4xl font-bold md:text-5xl">
+        {title}
+      </h2>
+      <p className="text-lg text-navy/75">{intro}</p>
+    </div>
+  );
+}
+
+const cardClass =
+  "group block rounded-3xl border border-navy/10 bg-white transition-all duration-500 hover:-translate-y-2 hover:border-sun hover:shadow-xl hover:shadow-navy/10";
+
+function InternshipCard({ job }: { job: Internship }) {
+  const inner = (
+    <>
+      <h3 className="mb-2 font-display text-2xl font-bold">{job.role}</h3>
+      <p className="mb-4">
+        <span className="inline-block rounded-full bg-sun px-3 py-1 text-[11px] font-bold uppercase tracking-widest">
+          {job.org} · {job.period}
+        </span>
+      </p>
+      {job.client && (
+        <p className="mb-1 text-sm font-semibold text-navy/90">{job.client}</p>
+      )}
+      {job.note && (
+        <p className="mb-4 text-xs italic text-navy/60">{job.note}</p>
+      )}
+      <ul className="ml-4 list-outside list-disc space-y-2 text-sm text-navy/85">
+        {job.bullets.map((bullet) => (
+          <li key={bullet.slice(0, 32)}>{bullet}</li>
+        ))}
+      </ul>
+    </>
+  );
+
+  return job.url ? (
+    <a
+      href={job.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`${cardClass} p-8 md:p-10`}
+    >
+      {inner}
+    </a>
+  ) : (
+    <article className={`${cardClass} p-8 md:p-10`}>{inner}</article>
+  );
+}
+
+function InternshipSection() {
+  return (
+    <section
+      id="internship"
+      className="mx-auto max-w-7xl scroll-mt-20 px-6 py-20 md:py-32 lg:px-12"
+    >
+      <SectionHeading title="Internship Experience" intro={internshipIntro} />
+      <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-12">
+        {internships.map((job) => (
+          <InternshipCard key={job.org} job={job} />
+        ))}
       </div>
-      <div className="flex flex-1 flex-col p-6">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-berry">
-          {project.category}
-        </p>
-        <h3 className="mt-2 font-display text-2xl leading-snug">
-          {project.title} <span className="text-clay">—</span> {project.brand}
+    </section>
+  );
+}
+
+function DetailBlock({
+  heading,
+  children,
+}: {
+  heading: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div>
+      <h4 className="mb-2 flex items-center gap-2 text-sm font-semibold uppercase tracking-wider">
+        <span className="inline-block h-[3px] w-5 rounded-full bg-sun" />
+        {heading}
+      </h4>
+      {children}
+    </div>
+  );
+}
+
+function ProjectCard({ project, label }: { project: Project; label: string }) {
+  const inner = (
+    <div className="flex flex-col gap-8 lg:flex-row lg:gap-12">
+      <div className="lg:w-1/3">
+        <div className="relative mb-6 aspect-video overflow-hidden rounded-2xl ring-1 ring-navy/10">
+          <Image
+            src={project.cover}
+            alt={`${project.title} — cover slide`}
+            fill
+            sizes="(min-width: 1024px) 30vw, (min-width: 640px) 90vw, 100vw"
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+        </div>
+        <span className="mb-3 inline-block rounded-full bg-sun px-3 py-1 text-[11px] font-bold uppercase tracking-widest">
+          {label}
+        </span>
+        <h3 className="mb-4 font-display text-3xl font-bold">
+          {project.title}
         </h3>
-        <p className="mt-3 flex-1 text-sm leading-relaxed text-clay">
+        <p className="text-sm leading-relaxed text-navy/75">
           {project.description}
         </p>
-        <div className="mt-5 flex flex-wrap items-center gap-2">
-          {project.tags.map((tag) => (
-            <span
-              key={tag}
-              className="rounded-full bg-sand px-3 py-1 text-[11px] font-medium text-ink/70"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
         {project.pdfUrl && (
-          <a
-            href={project.pdfUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-5 inline-flex items-center gap-1 text-sm font-medium text-berry transition-colors hover:text-berry-deep"
-          >
+          <span className="mt-5 inline-flex items-center gap-1 text-sm font-semibold underline decoration-sun decoration-[3px] underline-offset-4">
             View full deck <span aria-hidden>↗</span>
-          </a>
+          </span>
         )}
       </div>
-    </article>
+      <div className="space-y-6 lg:w-2/3">
+        <DetailBlock heading="Objective">
+          <p className="text-sm leading-relaxed text-navy/85">
+            {project.objective}
+          </p>
+        </DetailBlock>
+        <DetailBlock heading="Strategic Steps">
+          <ul className="ml-4 list-outside list-disc space-y-2 text-sm leading-relaxed text-navy/85">
+            {project.steps.map((step) => (
+              <li key={step.slice(0, 32)}>{step}</li>
+            ))}
+          </ul>
+        </DetailBlock>
+        <DetailBlock heading="Conclusion">
+          <p className="text-sm italic leading-relaxed text-navy/85">
+            {project.conclusion}
+          </p>
+        </DetailBlock>
+      </div>
+    </div>
+  );
+
+  return project.pdfUrl ? (
+    <a
+      href={project.pdfUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`${cardClass} p-8 md:p-12`}
+    >
+      {inner}
+    </a>
+  ) : (
+    <article className={`${cardClass} p-8 md:p-12`}>{inner}</article>
   );
 }
 
 function ProjectSection({
   id,
-  eyebrow,
   title,
   intro,
   projects,
-  tinted = false,
-  columns = 3,
+  labelPrefix,
 }: {
   id: string;
-  eyebrow: string;
   title: string;
   intro: string;
   projects: Project[];
-  tinted?: boolean;
-  columns?: 2 | 3;
+  labelPrefix: string;
 }) {
   return (
     <section
       id={id}
-      className={`scroll-mt-24 ${tinted ? "border-y border-line bg-sand" : ""}`}
+      className="mx-auto max-w-7xl scroll-mt-20 px-6 py-20 md:py-32 lg:px-12"
     >
-      <div className="mx-auto max-w-6xl px-6 py-24">
-        <SectionHeading eyebrow={eyebrow} title={title} intro={intro} />
-        <div
-          className={`mt-12 grid gap-8 sm:grid-cols-2 ${
-            columns === 3 ? "lg:grid-cols-3" : ""
-          }`}
-        >
-          {projects.map((project) => (
-            <ProjectCard
-              key={`${project.title}-${project.brand}`}
-              project={project}
-            />
-          ))}
-        </div>
+      <SectionHeading title={title} intro={intro} />
+      <div className="space-y-12 md:space-y-20">
+        {projects.map((project, index) => (
+          <ProjectCard
+            key={project.title}
+            project={project}
+            label={`${labelPrefix} ${index + 1}`}
+          />
+        ))}
       </div>
     </section>
   );
 }
 
-function Experience() {
+function Connect() {
+  const channels = [
+    { icon: "📧", label: profile.email, href: `mailto:${profile.email}` },
+    {
+      icon: "📞",
+      label: profile.phone,
+      href: `tel:${profile.phone.replaceAll(" ", "")}`,
+    },
+    { icon: "🔗", label: "LinkedIn Profile", href: profile.linkedin },
+  ];
+
   return (
-    <section id="experience" className="scroll-mt-24">
-      <div className="mx-auto max-w-6xl px-6 py-24">
-        <SectionHeading
-          eyebrow="Experience"
-          title="Where I've learned by doing."
-        />
-        <div className="mt-12 divide-y divide-line border-t border-line">
-          {experiences.map((experience) => (
-            <div
-              key={`${experience.role}-${experience.org}`}
-              className="grid gap-4 py-10 md:grid-cols-[4fr_8fr]"
-            >
-              <div>
-                <h3 className="font-display text-2xl">{experience.role}</h3>
-                <p className="mt-1 text-sm font-medium uppercase tracking-[0.14em] text-berry">
-                  {experience.org}
-                </p>
-              </div>
-              <p className="text-base leading-relaxed text-ink/80">
-                {experience.summary}
-              </p>
+    <section
+      id="connect"
+      className="mx-auto max-w-7xl scroll-mt-20 px-6 py-20 text-center lg:px-12"
+    >
+      <h2 className="mb-4 font-display text-4xl font-bold">
+        Let&rsquo;s Connect
+      </h2>
+      <p className="mx-auto mb-10 max-w-xl text-base text-navy/75 md:text-lg">
+        {connectIntro}
+      </p>
+      <div className="flex flex-col items-center justify-center gap-6 text-sm font-medium tracking-wide sm:flex-row">
+        {channels.map((channel) => (
+          <a
+            key={channel.label}
+            href={channel.href}
+            target={channel.href.startsWith("http") ? "_blank" : undefined}
+            rel={
+              channel.href.startsWith("http") ? "noopener noreferrer" : undefined
+            }
+            className="flex w-full items-center justify-center gap-2 rounded-full border border-navy/15 bg-white px-6 py-3 shadow-sm transition-colors hover:border-navy hover:bg-sun sm:w-auto"
+          >
+            <span className="text-base">{channel.icon}</span> {channel.label}
+          </a>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function SummaryFooter() {
+  return (
+    <footer
+      id="summary"
+      className="scroll-mt-20 bg-navy px-6 py-20 text-alice lg:px-12"
+    >
+      <div className="mx-auto max-w-6xl">
+        <h2 className="mb-12 text-center font-display text-3xl font-bold text-sun md:text-4xl">
+          Strategic Portfolio Summary
+        </h2>
+        <div className="grid grid-cols-1 gap-12 text-sm leading-relaxed md:grid-cols-3 md:text-base">
+          {summaryColumns.map((column) => (
+            <div key={column.heading}>
+              <h4 className="border-b border-sun/30 pb-3 text-xs font-semibold uppercase tracking-widest text-sun">
+                {column.heading}
+              </h4>
+              <p className="mt-4 opacity-90">{column.body}</p>
             </div>
           ))}
         </div>
-      </div>
-    </section>
-  );
-}
-
-function Contact() {
-  const socials = [
-    { label: "LinkedIn", href: profile.linkedin },
-    { label: "Facebook", href: profile.facebook },
-    { label: "Behance", href: profile.behance },
-  ].filter((social) => social.href);
-
-  return (
-    <footer id="contact" className="scroll-mt-24 bg-ink text-cream">
-      <div className="mx-auto max-w-6xl px-6 py-24">
-        <p className="text-xs font-semibold uppercase tracking-[0.22em] text-berry">
-          Contact
-        </p>
-        <h2 className="mt-4 max-w-3xl font-display text-4xl leading-tight tracking-tight sm:text-5xl">
-          Let&rsquo;s tell the next story{" "}
-          <em className="text-berry">together</em>.
-        </h2>
-        <p className="mt-6 max-w-xl text-base leading-relaxed text-cream/70">
-          I&rsquo;m stepping into the professional space and looking forward to
-          driving high-impact engagement within corporate and B2B communication
-          landscapes. Say hello — I&rsquo;d love to connect.
-        </p>
-        <div className="mt-10 flex flex-wrap items-center gap-4">
-          <a
-            href={`mailto:${profile.email}`}
-            className="rounded-full bg-cream px-7 py-3 text-sm font-medium text-ink transition-colors hover:bg-berry hover:text-cream"
-          >
-            {profile.email}
-          </a>
-          <a
-            href={`tel:${profile.phone.replaceAll(" ", "")}`}
-            className="rounded-full border border-cream/30 px-6 py-3 text-sm font-medium transition-colors hover:border-berry hover:text-berry"
-          >
-            {profile.phone}
-          </a>
-          {socials.map((social) => (
-            <a
-              key={social.label}
-              href={social.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-full border border-cream/30 px-6 py-3 text-sm font-medium transition-colors hover:border-berry hover:text-berry"
-            >
-              {social.label}
-            </a>
-          ))}
+        <div className="mt-16 border-t border-alice/10 pt-8 text-center text-xs font-light tracking-wide opacity-60">
+          © {new Date().getFullYear()} · Portfolio by {profile.name} ·{" "}
+          {profile.location}
         </div>
-        <p className="mt-20 border-t border-cream/15 pt-8 text-xs text-cream/50">
-          © {new Date().getFullYear()} {profile.name} · {profile.location}
-        </p>
       </div>
     </footer>
   );
@@ -342,28 +354,30 @@ function Contact() {
 
 export default function Home() {
   return (
-    <main id="top" className="flex-1">
+    <main className="flex-1">
       <Nav />
-      <Hero />
-      <About />
+      <Intro />
+      <Divider />
+      <InternshipSection />
+      <Divider />
       <ProjectSection
         id="academic"
-        eyebrow="Academic Projects"
-        title="Frameworks, made hands-on."
+        title="Academic Projects"
         intro={academicIntro}
         projects={academicProjects}
+        labelPrefix="Project"
       />
+      <Divider />
       <ProjectSection
-        id="competitions"
-        eyebrow="Personal Projects"
-        title="Competitions & creator campaigns."
+        id="personal"
+        title="Personal Projects"
         intro={personalIntro}
         projects={personalProjects}
-        tinted
-        columns={2}
+        labelPrefix="Personal"
       />
-      <Experience />
-      <Contact />
+      <Divider />
+      <Connect />
+      <SummaryFooter />
     </main>
   );
 }

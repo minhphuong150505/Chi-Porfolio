@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
+import { Be_Vietnam_Pro, Playfair_Display } from "next/font/google";
 import { profile } from "@/data/content";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
+const beVietnam = Be_Vietnam_Pro({
+  variable: "--font-be-vietnam",
+  weight: ["300", "400", "500", "600", "700"],
   subsets: ["latin", "vietnamese"],
 });
 
@@ -15,10 +16,10 @@ const playfair = Playfair_Display({
 
 export const metadata: Metadata = {
   title: `${profile.name} — Integrated Marketing Portfolio`,
-  description: `${profile.role} senior at ${profile.school}. ${profile.headline}`,
+  description: `${profile.role} · Marketing senior at ${profile.school}. IMC planning, trade marketing, e-commerce, and creator-driven campaigns.`,
   openGraph: {
     title: `${profile.name} — Integrated Marketing Portfolio`,
-    description: profile.headline,
+    description: `${profile.role} · Marketing senior at ${profile.school}.`,
     type: "website",
   },
 };
@@ -31,9 +32,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${playfair.variable} h-full antialiased`}
+      className={`${beVietnam.variable} ${playfair.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col leading-relaxed">
+        {children}
+      </body>
     </html>
   );
 }

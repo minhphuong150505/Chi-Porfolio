@@ -1,15 +1,12 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-cream: #faf6ef;
-  --color-sand: #f2ebdf;
-  --color-ink: #211a16;
-  --color-clay: #6e6259;
-  --color-berry: #96344e;
-  --color-berry-deep: #6e2439;
-  --color-line: #e6dccd;
+  /* Palette: Alice Blue / Space Cadet / Gargoyle Gas */
+  --color-alice: #eff8ff;
+  --color-navy: #192853;
+  --color-sun: #ffe14e;
 
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-be-vietnam), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-playfair), Georgia, "Times New Roman", serif;
 }
 
@@ -18,12 +15,26 @@ html {
 }
 
 body {
-  background: var(--color-cream);
-  color: var(--color-ink);
+  background: var(--color-alice);
+  color: var(--color-navy);
   font-family: var(--font-sans);
 }
 
 ::selection {
-  background: var(--color-berry);
-  color: var(--color-cream);
+  background: var(--color-sun);
+  color: var(--color-navy);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-alice);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-sun);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-navy);
 }
