@@ -58,8 +58,8 @@ function Intro() {
         <span className="mb-6 inline-block rounded-full bg-sun px-3 py-1 text-xs font-semibold uppercase tracking-widest">
           {profile.role}
         </span>
-        <h1 className="mb-8 font-display text-5xl font-bold leading-tight md:text-7xl">
-          Hi, I&rsquo;m {profile.name}{" "}
+        <h1 className="mb-8 font-display text-5xl font-bold leading-tight md:text-6xl">
+          {profile.headline}{" "}
           <span className="inline-block animate-bounce">👋</span>
         </h1>
         <div className="space-y-6 text-lg font-light text-navy/85 md:text-xl">
@@ -339,7 +339,11 @@ function SummaryFooter() {
               <h4 className="border-b border-sun/30 pb-3 text-xs font-semibold uppercase tracking-widest text-sun">
                 {column.heading}
               </h4>
-              <p className="mt-4 opacity-90">{column.body}</p>
+              <div className="mt-4 space-y-4 opacity-90">
+                {column.body.map((paragraph) => (
+                  <p key={paragraph.slice(0, 32)}>{paragraph}</p>
+                ))}
+              </div>
             </div>
           ))}
         </div>

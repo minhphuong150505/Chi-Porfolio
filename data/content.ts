@@ -16,9 +16,11 @@ export const profile = {
   phone: "+84 564 335 379",
   linkedin: "https://www.linkedin.com/in/pnqchi/",
   portrait: "/images/quynh-chi-portrait.jpg",
+  headline: "Hi, Welcome to Quynh Chi’s area",
   intro: [
-    "I’m a marketing senior who genuinely loves the puzzle of building campaigns. For me, marketing is where my creative side meets a deeply structured mind. I don't just look for flashy ideas; I love figuring out the why behind them using data, insights, and logic, then shaping them into stories that actually make sense to people.",
-    "My journey through university projects and internships has taught me that the best work happens when different teams connect. I really enjoy bridging the gap, whether that means translating complex metrics into a clear visual deck, or making sure a project’s core value doesn't get lost in translation. I’m eager to keep learning, asking questions, and bringing this collaborative, organized energy into the professional communication space.",
+    "I’m an Integrated Marketing Communication junior at Foreign Trade University, currently taking my very first steps into the marketing world.",
+    "If I'm being completely honest, my journey started simply because I loved designing slides back in high school. But as I dove deeper into marketing at university, I realized it is so much more than just pretty presentations. It’s a fascinating mix of creative ideas, data points, and understanding the “why” behind the everyday content that catches our eyes.",
+    "While there is still so much left for me to discover, I'm genuinely excited to embrace this learning journey. My goal is simple: to one day create those “wow” campaigns - the exact kind that left me in awe whenever I analyzed major brands in my college lectures.",
   ],
 };
 
@@ -295,14 +297,23 @@ export const connectIntro =
 export const summaryColumns = [
   {
     heading: "Personal Reflections",
-    body: "Putting this portfolio together made me realize how much I’ve grown. It’s a mix of university milestones, teamwork, and real-world trials. These projects shaped who I am today: a marketer who loves creative storytelling but always looks for the data and logic to back it up.",
+    body: [
+      "Putting this portfolio together made me realize how much I’ve grown. It’s a mix of university milestones, teamwork, and real-world trials.",
+      "These projects shaped who I am today: not only a real marketer-to-be who loves creative storytelling but always looks for the data and logic to back it up.",
+    ],
   },
   {
     heading: "Key Knowledge & Skills",
-    body: "Through these experiences, I’ve learned how to look at a campaign from start to finish. I’ve practiced breaking down a brand’s positioning, planning multi-channel IMC rollouts, and gaining practical, hands-on experience with fundamental e-commerce metrics like GMV and AOV.",
+    body: [
+      "Through these experiences, I’ve learned how to look at a campaign from start to finish. I’ve practiced breaking down a brand’s positioning and planning multi-channel IMC rollouts.",
+      "Beyond the strategy, I’ve gained hands-on experience working with data, learning how to track performance metrics and use data-driven insights to evaluate campaign effectiveness.",
+    ],
   },
   {
     heading: "Highlights & Challenges",
-    body: "What I’m most proud of is keeping my work focused on the actual consumer. The biggest challenge? Learning how to balance big, exciting creative concepts with realistic constraints, ensuring they align organically with real budget limits, execution steps, and numbers.",
+    body: [
+      "What I’m most proud of is always trying to deliver the best as I could, as if I was bringing value to myself.",
+      "The biggest challenge? I am still actively working on becoming more sensitive to data in general. I’ve come to realize that data is truly the backbone of everything in marketing, and learning how to anchor big creative concepts into measurable data is a journey I'm fully committed to.",
+    ],
   },
 ];
