@@ -1,36 +1,33 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Quỳnh Chi — Marketing Portfolio
 
-## Getting Started
+Portfolio cá nhân xây bằng [Next.js 16](https://nextjs.org) + Tailwind CSS, deploy trực tiếp lên [Vercel](https://vercel.com).
 
-First, run the development server:
+## Chỉnh sửa nội dung
+
+**Toàn bộ nội dung nằm trong 1 file duy nhất: [`data/content.ts`](data/content.ts).**
+
+Những chỗ cần cập nhật:
+
+1. **Email & mạng xã hội** — sửa `email`, `linkedin`, `facebook`, `behance` trong `profile` (để `""` nếu không dùng, nút sẽ tự ẩn).
+2. **Link PDF từng project** — upload các file PDF lên Google Drive (bật chế độ *Anyone with the link can view*), rồi dán link vào trường `pdfUrl` của từng project. Nút **"View full deck ↗"** sẽ tự xuất hiện trên card.
+   > Các file PDF gốc quá nặng (25MB–400MB) nên không đưa vào repo / Vercel được — dùng Drive là gọn nhất.
+3. **2 mô tả do AI viết** (đánh dấu `✏️` trong file): *Multimedia Communications — Canva × Affinity* và *Bản Lĩnh Marketer — OMO* không có trong bài giới thiệu gốc, hãy chỉnh lại cho đúng thực tế.
+
+Ảnh bìa các project nằm ở `public/covers/` (trích từ trang đầu mỗi file PDF).
+
+## Chạy thử trên máy
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Mở [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Deploy lên Vercel
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Vào [vercel.com/new](https://vercel.com/new), đăng nhập bằng GitHub.
+2. Chọn **Import** repo `Chi-Porfolio`.
+3. Vercel tự nhận diện Next.js — bấm **Deploy** là xong, không cần cấu hình gì thêm.
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Mỗi lần push code mới lên nhánh `main`, Vercel sẽ tự deploy lại.
