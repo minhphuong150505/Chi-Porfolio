@@ -11,9 +11,10 @@ export const profile = {
   firstName: "Chi",
   role: "Integrated Marketing Communications",
   school: "Foreign Trade University",
-  location: "Hanoi, Vietnam",
-  // ⬇️ Thay bằng email thật của bạn
-  email: "your.email@example.com",
+  location: "Ho Chi Minh City, Vietnam",
+  email: "pnqchi49@gmail.com",
+  phone: "+84 564 335 379",
+  portrait: "/images/quynh-chi-portrait.jpg",
   // Để "" nếu không dùng — icon sẽ tự ẩn
   linkedin: "",
   facebook: "",

@@ -53,7 +53,8 @@ function Hero() {
   ];
 
   return (
-    <section className="mx-auto max-w-6xl px-6 pt-20 pb-24 sm:pt-28">
+    <section className="mx-auto grid max-w-6xl gap-12 px-6 pt-20 pb-24 sm:pt-28 lg:grid-cols-[7fr_5fr] lg:items-center">
+      <div>
       <p className="mb-6 inline-flex items-center gap-2 rounded-full border border-line bg-white/60 px-4 py-1.5 text-xs font-medium uppercase tracking-[0.18em] text-clay">
         <span className="h-1.5 w-1.5 rounded-full bg-berry" />
         {profile.role} · {profile.school}
@@ -92,6 +93,21 @@ function Hero() {
           </div>
         ))}
       </dl>
+      </div>
+      <div className="relative mx-auto w-full max-w-md overflow-hidden rounded-[2rem] bg-sand shadow-2xl shadow-ink/15 lg:max-w-none">
+        <Image
+          src={profile.portrait}
+          alt={`Portrait of ${profile.name}`}
+          width={1280}
+          height={960}
+          priority
+          sizes="(min-width: 1024px) 40vw, (min-width: 640px) 28rem, 100vw"
+          className="aspect-[4/5] w-full object-cover object-[52%_45%]"
+        />
+        <p className="absolute right-5 bottom-5 rounded-full bg-cream/90 px-4 py-2 text-xs font-medium text-ink shadow-sm backdrop-blur">
+          {profile.location}
+        </p>
+      </div>
     </section>
   );
 }
@@ -297,6 +313,12 @@ function Contact() {
             className="rounded-full bg-cream px-7 py-3 text-sm font-medium text-ink transition-colors hover:bg-berry hover:text-cream"
           >
             {profile.email}
+          </a>
+          <a
+            href={`tel:${profile.phone.replaceAll(" ", "")}`}
+            className="rounded-full border border-cream/30 px-6 py-3 text-sm font-medium transition-colors hover:border-berry hover:text-berry"
+          >
+            {profile.phone}
           </a>
           {socials.map((social) => (
             <a
